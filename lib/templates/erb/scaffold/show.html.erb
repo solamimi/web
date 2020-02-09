@@ -1,0 +1,6 @@
+<%%= render "form", only_show: true %>
+
+<div class="row justify-content-around">
+  <%%= link_to '戻る', <%= index_helper %>_path, class: "btn btn-secondary col-md-2 col-sm-4" %>
+  <%%= link_to '編集', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-success col-md-2 col-sm-4' %>
+</div>

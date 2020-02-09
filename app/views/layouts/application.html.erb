@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>Solamimi-web</title>
+<%= csrf_meta_tags %>
+
+<%= stylesheet_link_tag    'application', media: 'all', :'data-turbolinks-track' => 'reload' %>
+<%= javascript_include_tag 'application', :'data-turbolinks-track' => 'reload' %>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag "application", :media => "all" %>
+<%= favicon_link_tag '/images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+<%= favicon_link_tag '/images/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+<%= favicon_link_tag '/images/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+<%= favicon_link_tag '/images/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+<%= favicon_link_tag '/images/favicon.ico', :rel => 'shortcut icon' %>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+<div class="container">
+<a class="navbar-brand" href="#">Solamimi-web</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbar">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a class="nav-link" href="#">リンク</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ドロップダウン</a>
+<div class="dropdown-menu" aria-labelledby="dropdown">
+<a class="dropdown-item" href="#">リンク1</a>
+<a class="dropdown-item" href="#">リンク2</a>
+<a class="dropdown-item" href="#">リンク3</a>
+</div>
+</li>
+</ul>
+<form class="form-inline my-2 my-md-0">
+<input class="form-control" type="search" placeholder="検索..." aria-label="検索...">
+</form>
+</div>
+</div>
+</nav>
+
+<div class="container">
+<%= content_tag :h2, (@page_name || [controller_name.titleize, action_name].join(":")) %>
+
+<%- flash.each do |name, msg| -%>
+<div class="alert alert-<%= name == "notice" ? "success" : "danger" %>">
+<button type="button" class="close" data-dismiss="alert">×</button>
+<%= msg %>
+</div>
+<%- end -%>
+
+<%= yield %>
+
+</div><!-- /container -->
+
+<footer class="bg-dark fixed-bottom">
+<div class="container">
+<p class="text-right text-muted mb-0">&copy; swan_match</p>
+</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ * require_tree .
+ *= require_self
+ *= require select2
+ *= require select2-bootstrap
+ *= require material_icons
+ * require bootstrap-datepicker
+ * require bootstrap-timepicker
+ */
+
+@import "material";
+/*@import 'bootstrap-timepicker';*/
+
+body { margin-top: 60px; margin-bottom: 30px; }
+abbr { color: theme-color("danger"); }
+.form-actions { text-align: center; }
+.form-group.select { margin-top: 0; }
+
+/* For Datepicker */
+.form-actions { text-align: center; }
+div.datepicker-days > table.table-condensed > thead > tr > th.dow:first-child,
+div.datepicker-days > table.table-condensed > tbody > tr > td.day:first-child {
+  /*background-color: lighten($danger, 33.3%);*/
+  color: theme-color("danger");
+}
+div.datepicker-days > table.table-condensed > thead > tr > th.dow:last-child,
+div.datepicker-days > table.table-condensed > tbody > tr > td.day:last-child {
+  /*background-color: lighten($primary, 33.3%);*/
+  color: theme-color("info");
+}

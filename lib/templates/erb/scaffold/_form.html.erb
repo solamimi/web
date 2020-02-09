@@ -1,0 +1,53 @@
+<%%-
+only_show ||= false
+url =
+  if @<%= singular_table_name %>.new_record?
+    <%= [controller_class_path, table_name].flatten.compact.join("_") %>_path
+  else
+    <%= [controller_class_path, singular_table_name].flatten.compact.join("_")%>_path(@<%= singular_table_name %>)
+  end
+-%>
+<div class="card bg-light mb-3"><div class="card-body">
+  <%%= simple_form_for(@<%= singular_table_name %>, url: url) do |f| %>
+    <%%= f.error_notification %>
+
+    <div class="form-inputs">
+<%- attributes.each_slice(2) do |pair| -%>
+      <div class="row">
+  <%- pair.each do |attribute| -%>
+    <%- if pair -%>
+        <div class="col-md">
+      <%- if attribute.reference? -%>
+          <%%= f.association(
+            :<%= attribute.name %>,
+            include_blank: "(未選択)",
+            collection: @<%= attribute.name %>_options,
+            input_html: {
+              class: "select2"
+            },
+            disabled: only_show
+          ) %>
+      <%- else -%>
+          <%%= f.input(
+            :<%= attribute.name %>,
+        <%- if attribute.type == :date -%>
+            as: :custom_date,
+        <%- end -%>
+            disabled: only_show
+          ) %>
+      <%- end -%>
+        </div>
+    <%- end -%>
+  <%- end -%>
+      </div>
+<%- end -%>
+      <%%= f.hidden_field :lock_version %>
+    </div>
+
+    <%%- unless only_show -%>
+      <div class="form-actions row justify-content-around">
+        <%%= f.button :submit, class: "btn btn-primary col-md-3 col-sm-5" %>
+      </div>
+    <%%- end -%>
+  <%% end %>
+</div></div>
