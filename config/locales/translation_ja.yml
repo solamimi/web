@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      active_record/session_store/session: アクティブレコード/セッションストア/セッション  #g
+      session: セッション  #g
+
+    attributes:
+      active_record/session_store/session:
+        data: データ  #g
+
+      session:
+        data: データ  #g
