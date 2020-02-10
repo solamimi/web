@@ -3,6 +3,7 @@ ja:
     models:
       active_record/session_store/session: アクティブレコード/セッションストア/セッション  #g
       session: セッション  #g
+      listened: 聞いた  #g
 
     attributes:
       active_record/session_store/session:
@@ -10,3 +11,14 @@ ja:
 
       session:
         data: データ  #g
+
+      listened:
+        created_by: によって作成された  #g
+        deleted_at: で削除  #g
+        deleted_by: 削除者  #g
+        listen_at: 聞く  #g
+        listen_origin: 起源を聞く  #g
+        listen_words: 言葉を聞く  #g
+        lock_version: ロックバージョン  #g
+        updated_by: 更新者  #g
+        value: 値  #g

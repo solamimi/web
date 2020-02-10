@@ -120,3 +120,8 @@ group :development, :test do
   # ER図自動生成
   gem 'rails-erd'
 end
+
+gem 'google-api-client'
+gem 'google_drive'
+
+gem 'dotenv-rails'

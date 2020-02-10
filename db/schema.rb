@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_09_183820) do
+ActiveRecord::Schema.define(version: 2020_02_09_192932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listeneds", force: :cascade do |t|
+    t.datetime "listen_at"
+    t.integer "user_id"
+    t.string "listen_words"
+    t.string "listen_origin"
+    t.integer "value"
+    t.integer "lock_version", default: 0, null: false
+    t.integer "created_by"
+    t.integer "updated_by"
+    t.integer "deleted_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
