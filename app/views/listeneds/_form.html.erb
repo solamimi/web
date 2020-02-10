@@ -1,0 +1,60 @@
+<%-
+only_show ||= false
+url =
+  if @listened.new_record?
+    listeneds_path
+  else
+    listened_path(@listened)
+  end
+-%>
+<div class="card bg-light mb-3"><div class="card-body">
+  <%= simple_form_for(@listened, url: url) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md">
+          <%= f.input(
+            :listen_at,
+            disabled: only_show
+          ) %>
+        </div>
+        <div class="col-md">
+          <%= f.input(
+            :user_id,
+            disabled: only_show
+          ) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <%= f.input(
+            :listen_words,
+            disabled: only_show
+          ) %>
+        </div>
+        <div class="col-md">
+          <%= f.input(
+            :listen_origin,
+            disabled: only_show
+          ) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <%= f.input(
+            :value,
+            disabled: only_show
+          ) %>
+        </div>
+      </div>
+      <%= f.hidden_field :lock_version %>
+    </div>
+
+    <%- unless only_show -%>
+      <div class="form-actions row justify-content-around">
+        <%= f.button :submit, class: "btn btn-primary col-md-3 col-sm-5" %>
+      </div>
+    <%- end -%>
+  <% end %>
+</div></div>

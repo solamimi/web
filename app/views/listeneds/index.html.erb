@@ -1,0 +1,87 @@
+<div class="card bg-light mb-3"><div class="card-body">
+  <%= simple_form_for @search_listened, url: search_listeneds_path do |f| %>
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md">
+          <%= f.input(
+            :listen_at,
+            as: :date_range
+          ) %>
+        </div>
+        <div class="col-md">
+          <%= f.input(
+            :user_id,
+            as: :int_range
+          ) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <%= f.input(
+            :listen_words,
+          ) %>
+        </div>
+        <div class="col-md">
+          <%= f.input(
+            :listen_origin,
+          ) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <%= f.input(
+            :value,
+            as: :int_range
+          ) %>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions search d-flex justify-content-end">
+      <%= f.button :submit, class: "btn btn-primary col-md-3 col-sm-5", value: "検索" %>
+    </div>
+  <% end %>
+</div></div>
+
+<div class="card bg-light mb-3"><div class="card-body">
+  <%- if @listeneds.blank? -%>
+    <p><%= t("activerecord.models.listened") %>は登録されていません。</p>
+  <%- else -%>
+    <div class="text-right">
+      <%= page_entries_info @listeneds %>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th><%= Listened.human_attribute_name :listen_at %></th>
+            <th><%= Listened.human_attribute_name :user_id %></th>
+            <th><%= Listened.human_attribute_name :listen_words %></th>
+            <th><%= Listened.human_attribute_name :listen_origin %></th>
+            <th><%= Listened.human_attribute_name :value %></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @listeneds.each do |listened| %>
+            <tr>
+              <td><%= listened.listen_at %></td>
+              <td><%= listened.user_id %></td>
+              <td><%= listened.listen_words %></td>
+              <td><%= listened.listen_origin %></td>
+              <td><%= listened.value %></td>
+              <td><%= link_to '編集', edit_listened_path(listened), class: 'btn btn-primary btn-block' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row justify-content-around">
+      <%= paginate @listeneds %>
+    </div>
+  <%- end -%>
+</div></div>
+
+<div class="row justify-content-around">
+  <%= link_to '新規作成', new_listened_path, class: 'btn btn-info col-md-3 col-sm-5' %>
+</div>

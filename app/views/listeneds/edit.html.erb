@@ -1,0 +1,6 @@
+<%= render 'form', listened: @listened %>
+
+<div class="row justify-content-around">
+  <%= link_to '戻る', listeneds_path, class: "btn btn-secondary col-md-2 col-sm-4" %>
+  <%= link_to '削除', listened_path(@listened), method: :delete, data: { confirm: '削除します。よろしいですか？' }, class: 'btn btn-danger col-md-2 col-sm-4'  %>
+</div>
